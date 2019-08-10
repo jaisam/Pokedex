@@ -3,11 +3,9 @@
         <input class="form-control mr-sm-2" style='width : 100%' type="search" placeholder="Search" aria-label="Search">
     </div>
     <div class="col-sm-1">
-        <button class="btn btn-outline-success my-2 mr-sm-0" type="submit">Search</button>
+        <button class="btn btn-outline-success my-2 mr-sm-0" type="submit">Name Search</button>
     </div>
 </div>
-<app-pokemon-details *ngFor="let loopVariable of localPokemonDataTS; let i = index"
-    [id] = "loopVariable.id"
-    [name] = "loopVariable.name"
-    [Attack] = "loopvariable.base.Attack">
+<app-pokemon-details *ngFor="let loopVariable of localPokemonDataTs; let i = index"
+    [pokemonDataObject] = "loopVariable">
 </app-pokemon-details>
