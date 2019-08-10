@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as localPokemonDataTs from '../pokemonData.json';
 
 @Component({
@@ -7,9 +7,11 @@ import * as localPokemonDataTs from '../pokemonData.json';
   styleUrls: ['./name.component.css']
 })
 export class NameComponent implements OnInit {
-
-  constructor() { 
-  
+pokemon;
+  constructor() {
+    this.pokemon=localPokemonDataTs.pokemonData;
+    // console.log(typeof  this.pokemon);
+    // console.log(localPokemonDataTs.pokemonData[0]);
   }
 
   ngOnInit() {
