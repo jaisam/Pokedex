@@ -14,10 +14,6 @@ export class PokemonDetailsComponent implements OnInit {
   
   ngOnInit() { 
     console.log(this.pokemonDataObject);
-    //console.log(this.Attack);
-    //console.log(localPokemonDataTS[0].base.Defense);
-    //console.log(localPokemonDataTS[0].base.Speed);
-    //console.log(localPokemonDataTS[0].type[0]);
   }
 
 }

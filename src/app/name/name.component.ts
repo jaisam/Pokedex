@@ -8,12 +8,12 @@ import * as localPokemonData from '../pokemonData.json';
 })
 export class NameComponent implements OnInit {
 
-  localPokemonDataTs = localPokemonData
+  localPokemonDataTs;
   constructor() { 
-  
+    this.localPokemonDataTs = localPokemonData;
   }
 
   ngOnInit() {
-    
+    console.log(this.localPokemonDataTs.data);
   }
 }
