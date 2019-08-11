@@ -13,7 +13,7 @@ export class PokemonDetailsComponent implements OnInit {
   constructor() { }
   
   ngOnInit() { 
-    console.log(this.pokemonDataObject.weaknesses[0]);
+    //console.log(this.pokemonDataObject.weaknesses[0]);
   }
 
 }
