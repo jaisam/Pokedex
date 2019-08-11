@@ -6,10 +6,12 @@
                 <h3 class="card-title">Name = {{ pokemonDataObject.name }}</h3>
                 <p class="card-text"> Height = {{ pokemonDataObject.height }} </p>
                 <p class="card-text"> Weight = {{ pokemonDataObject.weight }}</p>
-                
-                    <p class="card-text" *ngFor = "let loopVariable of pokemonDataObject.weaknesses,let i = index"
-                > Weaknesses =  <span> {{ loopVariable[i] }} </span>   </p>
-                
+                <p class="card-text"> Weaknesses = </p>
+                <ul>
+                    <li *ngFor="let loopVariable of pokemonDataObject.weaknesses,let i = index" >
+                         <span> {{ loopVariable }} </span>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="col-md-4">
