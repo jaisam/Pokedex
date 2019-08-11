@@ -41,10 +41,11 @@ export class NameComponent implements OnInit {
     for(let i= 0 ; i < localPokemonData.data.length ; i++){
       
       if ( localPokemonData.data[i].name.includes(this.textInput,0)){
-      autoCompleteArray.push(localPokemonData.data[i]);
+      autoCompleteArray.push(localPokemonData.data[i].name);
         console.log(autoCompleteArray);
+        console.log(typeof(autoCompleteArray));
       }
-      
+
     }    
   }
 }
