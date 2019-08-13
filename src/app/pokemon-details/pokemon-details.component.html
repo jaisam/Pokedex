@@ -1,16 +1,27 @@
-<div class="card mb-3" >
+<div class="card mb-3">
     <div class="row no-gutters">
 
         <div class="col-md-8">
             <div class="card-body">
-                <h3 class="card-title">Name = {{ name }} </h3>
-                <p class="card-text"> Attack =  {{ Attack }} </p>
-                <p class="card-text"> Defense =  </p>
-                <p class="card-text"> Speed =  </p>
+                <h3 class="card-title">Name = {{ pokemonDataObject.name }}</h3>
+                <p class="card-text"> Height = {{ pokemonDataObject.height }} </p>
+                <p class="card-text"> Weight = {{ pokemonDataObject.weight }}</p>
+                <p class="card-text"> Weaknesses = </p>
+                <ul>
+                    <li *ngFor="let loopVariable of pokemonDataObject.weaknesses,let i = index" >
+                         <span> {{ loopVariable }} </span>
+                    </li>
+                </ul>
+                <p class="card-text"> Next Evolutions = </p>
+                <ul>
+                    <li *ngFor="let loopVariable of pokemonDataObject.next_evolution,let i = index" >
+                         <span> {{ loopVariable.name }} </span>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="col-md-4">
-            <img src="http://www.serebii.net/pokemongo/pokemon/025.png" class="card-img" alt="...">
+            <img [src]="pokemonDataObject.img" class="card-img" [alt]="pokemonDataObject.name">
         </div>
     </div>
-    </div>
+</div>
