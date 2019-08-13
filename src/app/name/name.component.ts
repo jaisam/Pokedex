@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as localPokemonData from '../pokemonData.json';
 
 @Component({
@@ -9,9 +9,10 @@ import * as localPokemonData from '../pokemonData.json';
 export class NameComponent implements OnInit {
 
   localPokemonDataTs;
-  textInput : string;
+  textInput: string;
+
   /* why this does not work? Code Piece-2
-  constructor() { 
+  constructor() {
     this.localPokemonDataTs = localPokemonData;
   }
 
@@ -26,25 +27,26 @@ export class NameComponent implements OnInit {
 
   ngOnInit() {
 
-}
+  }
 
-  searchByName(event : Event) {
+  searchByName(event: Event) {
     console.log(event);
   }
 
-  autoCompletion(event : any) {
-    
-    //console.log(event.target.value);
-    this.textInput = event.target.value ;
-    let autoCompleteArray = [];
+  autoCompletion(event: any) {
 
-    for(let i= 0 ; i < localPokemonData.data.length ; i++){
-      
-      if ( localPokemonData.data[i].name.includes(this.textInput,0)){
-      autoCompleteArray.push(localPokemonData.data[i]);
-        console.log(autoCompleteArray);
+    //console.log(event.target.value);
+    this.textInput = event.target.value;
+    console.log(event.target.value);
+    let autoCompleteArray = [];
+    if (event.target.value !== "") {
+      for (let i = 0; i < localPokemonData.data.length; i++) {
+        if (localPokemonData.data[i].name.toLowerCase().includes(this.textInput.toLowerCase())) {
+          autoCompleteArray.push(localPokemonData.data[i]);
+        }
       }
-      
-    }    
+    }
+
+    console.log(autoCompleteArray);
   }
 }
