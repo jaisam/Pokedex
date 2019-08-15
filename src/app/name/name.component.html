@@ -9,9 +9,9 @@
         >Name Search</button>
     </div>
 </div>
-<div *ngFor="let loopVariable of autoCompleteArray">
+<p *ngFor="let loopVariable of autoCompleteArray">
        {{ loopVariable.name }} 
-</div>
+</p>
 <!-- why this does not work? Code Piece-2
 <app-pokemon-details *ngFor="let loopVariable of localPokemonDataTs; let i = index"
     [pokemonDataObject] = "loopVariable.data">
