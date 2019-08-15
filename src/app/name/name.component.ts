@@ -10,6 +10,7 @@ export class NameComponent implements OnInit {
 
   localPokemonDataTs;
   textInput: string;
+  autoCompleteArray = [];
 
   /* why this does not work? Code Piece-2
   constructor() {
@@ -38,15 +39,15 @@ export class NameComponent implements OnInit {
     //console.log(event.target.value);
     this.textInput = event.target.value;
     console.log(event.target.value);
-    let autoCompleteArray = [];
+    this.autoCompleteArray = [];
     if (event.target.value !== "") {
       for (let i = 0; i < localPokemonData.data.length; i++) {
         if (localPokemonData.data[i].name.toLowerCase().includes(this.textInput.toLowerCase())) {
-          autoCompleteArray.push(localPokemonData.data[i]);
+          this.autoCompleteArray.push(localPokemonData.data[i]);
         }
       }
     }
 
-    console.log(autoCompleteArray);
+    console.log(this.autoCompleteArray);
   }
 }
