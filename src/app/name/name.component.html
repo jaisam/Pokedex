@@ -1,9 +1,10 @@
-<form #nameForm= "ngform">
+<form #nameForm= "ngForm">
     <div class="form-inline row">
         <div class="col-sm-11">
-            <input id="name" class="form-control mr-sm-2" style='width : 100%' type="search" placeholder="Search" aria-label="Search"
+            <input id="inputText" class="form-control mr-sm-2" style='width : 100%' type="search" placeholder="Search" aria-label="Search"
             (input) = "autoCompletion($event)"
-            [(ngModel)] = "name"
+            name = "inputText"
+            [(ngModel)] = "inputText"
            >
         </div>
         <div class="col-sm-1">
@@ -13,7 +14,7 @@
         </div>
     </div>
     </form>
-    
+    <div> {{ inputText }} </div>
     <ul>
         <li  class="col-sm-11" 
             *ngFor="let loopVariable of autoCompleteArray">
