@@ -2,7 +2,7 @@
   <div class="form-inline row">
     <div class="col-sm-11">
       <input id="nameInput" class="form-control mr-sm-2" style='width : 100%;' type="text" placeholder="Search"
-             aria-label="Search" (change)="autoCompletion($event)" name="nameInput" [(ngModel)]="nameModel.nameInput">
+             aria-label="Search" (input)="autoCompletion($event)" name="nameInput" [(ngModel)]="nameModel.nameInput">
     </div>
     <div class="col-sm-1">
       <button class="btn btn-outline-success my-2 mr-sm-0" type="submit">Name Search
