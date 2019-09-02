@@ -11,7 +11,7 @@ export class NameComponent implements OnInit {
   localPokemonDataTs;
   textInput : string;
   autoCompleteArray  = [];
-  clickedDataArray = [];
+  selectedPokemon;
   
   /* why this does not work? Code Piece-2
   constructor() { 
@@ -70,14 +70,12 @@ export class NameComponent implements OnInit {
     
     //console.log(id);
     this.autoCompleteArray.splice(0,this.autoCompleteArray.length);
-    
+
     for(let i= 0 ; i < localPokemonData.data.length ; i++){
       
       if ( localPokemonData.data[i].id == Number(id)) {
-
-        this.clickedDataArray.push(localPokemonData.data[i]);
-        console.log(this.clickedDataArray);
-        //console.log(typeof(this.clickedDataArray));
+        this.selectedPokemon = localPokemonData.data[i];
+        console.log(this.selectedPokemon);
       }
 
   }

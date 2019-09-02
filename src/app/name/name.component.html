@@ -14,7 +14,6 @@
         </div>
     </div>
     </form>
-    <div> {{ inputText }} </div>
     <ul>
         <li  class="col-sm-11" 
             *ngFor="let loopVariable of autoCompleteArray"
@@ -34,3 +33,7 @@
         [pokemonDataObject] = "loopVariable">
     </app-pokemon-details>
     -->
+
+    <app-pokemon-details 
+        [pokemonDataObject] = "selectedPokemon">
+    </app-pokemon-details>
