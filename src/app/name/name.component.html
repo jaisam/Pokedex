@@ -1,39 +1,32 @@
-<form #nameForm= "ngForm">
+<form #nameForm="ngForm">
     <div class="form-inline row">
         <div class="col-sm-11">
-            <input id="inputText" class="form-control mr-sm-2" style='width : 100%' type="search" placeholder="Search" aria-label="Search"
-            (input) = "autoCompletion($event)"
-            name = "inputText"
-            [(ngModel)] = "inputText"
-           >
+            <input id="inputText" class="form-control mr-sm-2" style='width : 100%' type="search" placeholder="Search"
+                aria-label="Search" (input)="autoCompletion($event)" name="inputText" [(ngModel)]="inputText">
         </div>
         <div class="col-sm-1">
-            <button class="btn btn-outline-success my-2 mr-sm-0" type="submit"
-            (input) = "searchByName($event)"
-            >Name Search</button>
+            <button class="btn btn-outline-success my-2 mr-sm-0" type="submit" (input)="searchByName($event)">Name
+                Search</button>
         </div>
     </div>
-    </form>
-    <ul>
-        <li  class="col-sm-11" 
-            *ngFor="let loopVariable of autoCompleteArray"
-            (click) = "displayClickedData(loopVariable.id)">
-                {{ loopVariable.name }}        
-        </li>
-      </ul>
+</form>
+<ul>
+    <li class="col-sm-11" *ngFor="let loopVariable of autoCompleteArray" (click)="displayClickedData(loopVariable.id)">
+        {{ loopVariable.name }}
+    </li>
+</ul>
 
-    <!-- why this does not work? Code Piece-2
+<!-- why this does not work? Code Piece-2
     <app-pokemon-details *ngFor="let loopVariable of localPokemonDataTs; let i = index"
         [pokemonDataObject] = "loopVariable.data">
     </app-pokemon-details>
     -->
-    
-    <!-- correct code
+
+<!-- correct code
     <app-pokemon-details *ngFor="let loopVariable of localPokemonDataTs; let i = index"
         [pokemonDataObject] = "loopVariable">
     </app-pokemon-details>
     -->
 
-    <app-pokemon-details 
-        [pokemonDataObject] = "selectedPokemon">
-    </app-pokemon-details>
+<app-pokemon-details *ngIf="selectedPokemon" [pokemonDataObject]="selectedPokemon">
+</app-pokemon-details>

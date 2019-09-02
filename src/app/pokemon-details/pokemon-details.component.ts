@@ -7,13 +7,15 @@ import * as localPokemonDataTS from '../pokemonData.json';
   styleUrls: ['./pokemon-details.component.css']
 })
 export class PokemonDetailsComponent implements OnInit {
-  @Input() pokemonDataObject ;
+  @Input() pokemonDataObject;
 
 
-  constructor() { }
-  
-  ngOnInit() { 
-    console.log(this.pokemonDataObject);
+  constructor() {
+    //console.log(this.pokemonDataObject);
+  }
+
+  ngOnInit() {
+
   }
 
 }
