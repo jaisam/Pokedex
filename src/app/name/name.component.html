@@ -17,15 +17,12 @@
     <div> {{ inputText }} </div>
     <ul>
         <li  class="col-sm-11" 
-            *ngFor="let loopVariable of autoCompleteArray">
-                {{ loopVariable }} 
+            *ngFor="let loopVariable of autoCompleteArray"
+            (click) = "displayClickedData(loopvariable.id)">
+                {{ loopVariable.name }}        
         </li>
       </ul>
-    <!--
-    <p *ngFor="let loopVariable of autoCompleteArray">
-           {{ loopVariable }} 
-    </p>
-    -->
+
     <!-- why this does not work? Code Piece-2
     <app-pokemon-details *ngFor="let loopVariable of localPokemonDataTs; let i = index"
         [pokemonDataObject] = "loopVariable.data">

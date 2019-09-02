@@ -36,8 +36,13 @@ export class NameComponent implements OnInit {
   }
 
   autoCompletion(event : any) {
+    //create local object and push object in autoComplete array
+    var obj = {
+    id :"",
+    name : ""
+    }    
     
-    //console.log(event.target.value);
+    console.log(event.target.value);
     this.textInput = event.target.value ;
     this.autoCompleteArray.splice(0,this.autoCompleteArray.length);
 
@@ -45,8 +50,12 @@ export class NameComponent implements OnInit {
     for(let i= 0 ; i < localPokemonData.data.length ; i++){
       
       if ( localPokemonData.data[i].name.toLowerCase().includes(this.textInput.toLowerCase(),0)){
-      this.autoCompleteArray.push(localPokemonData.data[i].name);
-        //console.log(this.autoCompleteArray);
+       obj.id = String(localPokemonData.data[i].id);
+        obj.name = localPokemonData.data[i].name;
+       
+
+      this.autoCompleteArray.push(obj);
+        console.log(this.autoCompleteArray);
         //console.log(typeof(this.autoCompleteArray));
       }
 
