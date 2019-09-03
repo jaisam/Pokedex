@@ -47,7 +47,8 @@ export class NameComponent implements OnInit {
     if (this.textInput != "") {
       for (let i = 0; i < localPokemonData.data.length; i++) {
 
-        if (localPokemonData.data[i].name.toLowerCase().includes(this.textInput.toLowerCase(), 0)) {
+        if ((this.textInput).toLowerCase() === (localPokemonData.data[i].name.substring(0,this.textInput.length)).toLowerCase()) {
+        //if (localPokemonData.data[i].name.toLowerCase().includes(this.textInput.toLowerCase(), 0)) {
           //create local object and push object in autoComplete array
           let obj = {
             id: "",

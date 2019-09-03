@@ -36,7 +36,7 @@ export class TypeComponent implements OnInit {
 
           if ((this.inputValue).toUpperCase() === (this.localPokemonDataTS[i].type[j].substring(0, this.inputValue.length)).toUpperCase()) {
             
-            var obj = {
+            let obj = {
               id: "",
               name: ""
             }
