@@ -10,7 +10,8 @@ export class TypeComponent implements OnInit {
 
   localPokemonDataTS;
   inputValue: String;
-  autoCompleteArray = [];
+  pokemonDataArray = [];
+  autoCompleteType = [];
 
   constructor() {
     this.localPokemonDataTS = localPokemonData.data;
@@ -22,40 +23,60 @@ export class TypeComponent implements OnInit {
   autoComplete(event: Event) {
     
     this.inputValue = (<HTMLInputElement>event.target).value; // Why typecasting is required?
-    this.autoCompleteArray.splice(0, this.autoCompleteArray.length);
+    this.autoCompleteType.splice(0,this.autoCompleteType.length);
 
-    if (this.inputValue !== "") {
-      //console.log((this.inputValue).toUpperCase());
-      //console.log(this.inputValue.length);
+    // Auto-complete Types based on Input added by User
+    if(this.inputValue != ""){
+      console.log(this.inputValue);
+      
 
-      for (let i = 0; i < this.localPokemonDataTS.length; i++) {
-        //console.log((this.localPokemonDataTS[i].name.substring(0,this.inputValue.length)).toUpperCase());
+      for (let i=0 ; i < this.localPokemonDataTS.length ; i++){
 
-        for (let j = 0; j < this.localPokemonDataTS[i].type.length; j++) {
-          //console.log(this.localPokemonDataTS[i].type[j]);
+        for (let j=0 ; j < this.localPokemonDataTS[i].type.length ; j++){
 
-          if ((this.inputValue).toUpperCase() === (this.localPokemonDataTS[i].type[j].substring(0, this.inputValue.length)).toUpperCase()) {
+          if (this.inputValue.toUpperCase() === (this.localPokemonDataTS[i].type[j].toUpperCase()).substring(0,this.inputValue.length) ){
             
-            let obj = {
-              id: "",
-              name: ""
-            }
-        
-            obj.id = this.localPokemonDataTS[i].id;
-            obj.name = this.localPokemonDataTS[i].name;
-            console.log(obj.name);
-            this.autoCompleteArray.push(obj);
-            break;
+            
+            this.autoCompleteType.push(this.localPokemonDataTS[i].type[j]);
           }
         }
-
       }
     }
 
-    //   console.log(this.autoCompleteArray.length);
-    //   for(let i=0 ; i< this.autoCompleteArray.length ; i++){
-    //     console.log(this.autoCompleteArray[i].name);
-    // }
+    // Removing duplicate data from autoCompleteType by converting it to Set and then to array again
+    this.autoCompleteType = [...new Set(this.autoCompleteType)];
+
 
   }
+
+      
+    // //Below code finds list of Pokemon based on Type inputted by User. Commented for time being
+    // if (this.inputValue !== "") {
+    //   //console.log((this.inputValue).toUpperCase());
+    //   //console.log(this.inputValue.length);
+
+    //   for (let i = 0; i < this.localPokemonDataTS.length; i++) {
+    //     //console.log((this.localPokemonDataTS[i].name.substring(0,this.inputValue.length)).toUpperCase());
+
+    //     for (let j = 0; j < this.localPokemonDataTS[i].type.length; j++) {
+    //       //console.log(this.localPokemonDataTS[i].type[j]);
+
+    //       if ((this.inputValue).toUpperCase() === (this.localPokemonDataTS[i].type[j].substring(0, this.inputValue.length)).toUpperCase()) {
+            
+    //         let obj = {
+    //           id: "",
+    //           name: ""
+    //         }
+        
+    //         obj.id = this.localPokemonDataTS[i].id;
+    //         obj.name = this.localPokemonDataTS[i].name;
+    //         console.log(obj.name);
+    //         this.pokemonDataArray.push(obj);
+    //         break;
+    //       }
+    //     }
+
+    //   }
+    // }
+
 }
