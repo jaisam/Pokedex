@@ -24,10 +24,11 @@ export class TypeComponent implements OnInit {
     
     this.inputValue = (<HTMLInputElement>event.target).value; // Why typecasting is required?
     this.autoCompleteType.splice(0,this.autoCompleteType.length);
+    this.pokemonDataArray.splice(0,this.pokemonDataArray.length);
 
     // Auto-complete Types based on Input added by User
     if(this.inputValue != ""){
-      console.log(this.inputValue);
+      //console.log(this.inputValue);
       
 
       for (let i=0 ; i < this.localPokemonDataTS.length ; i++){
@@ -49,34 +50,37 @@ export class TypeComponent implements OnInit {
 
   }
 
-      
-    // //Below code finds list of Pokemon based on Type inputted by User. Commented for time being
-    // if (this.inputValue !== "") {
-    //   //console.log((this.inputValue).toUpperCase());
-    //   //console.log(this.inputValue.length);
+//Below code finds list of Pokemon based on Type inputted by User. 
+  getPokemons(inputText : String){
+    console.log(inputText);
+    this.pokemonDataArray.splice(0,this.pokemonDataArray.length);
+ 
+    if (inputText !== "") {
+      //console.log((inputText).toUpperCase());
 
-    //   for (let i = 0; i < this.localPokemonDataTS.length; i++) {
-    //     //console.log((this.localPokemonDataTS[i].name.substring(0,this.inputValue.length)).toUpperCase());
+      for (let i = 0; i < this.localPokemonDataTS.length; i++) {
+        //console.log((this.localPokemonDataTS[i].name.substring(0,inputText.length)).toUpperCase());
 
-    //     for (let j = 0; j < this.localPokemonDataTS[i].type.length; j++) {
-    //       //console.log(this.localPokemonDataTS[i].type[j]);
+        for (let j = 0; j < this.localPokemonDataTS[i].type.length; j++) {
+          //console.log(this.localPokemonDataTS[i].type[j]);
 
-    //       if ((this.inputValue).toUpperCase() === (this.localPokemonDataTS[i].type[j].substring(0, this.inputValue.length)).toUpperCase()) {
+          if ((inputText).toUpperCase() === (this.localPokemonDataTS[i].type[j].substring(0, inputText.length)).toUpperCase()) {
             
-    //         let obj = {
-    //           id: "",
-    //           name: ""
-    //         }
+            // let obj = {
+            //   id: "",
+            //   name: ""
+            // }
         
-    //         obj.id = this.localPokemonDataTS[i].id;
-    //         obj.name = this.localPokemonDataTS[i].name;
-    //         console.log(obj.name);
-    //         this.pokemonDataArray.push(obj);
-    //         break;
-    //       }
-    //     }
+            // obj.id = this.localPokemonDataTS[i].id;
+            // obj.name = this.localPokemonDataTS[i].name;
+            // console.log(obj.name);
+            this.pokemonDataArray.push(this.localPokemonDataTS[i]);
+            break;
+          }
+        }
 
-    //   }
-    // }
+      }
+    }
+  }
 
 }
