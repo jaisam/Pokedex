@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as localPokemonData from '../pokemonData.json';
+import { AutoCompleteService } from '../Services/auto-complete.service';
+import { GetPokemonsDataService } from '../Services/get-pokemons-data.service';
 
 @Component({
   selector: 'app-name',
@@ -8,7 +10,7 @@ import * as localPokemonData from '../pokemonData.json';
 })
 export class NameComponent implements OnInit {
 
-  localPokemonDataTs;
+  localPokemonDataTs ;
   textInput: string;
   autoCompleteArray = [];
   selectedPokemon;
@@ -23,7 +25,8 @@ export class NameComponent implements OnInit {
   }
   */
 
-  constructor() {
+  constructor( private autoCompleteServiceVar : AutoCompleteService ,
+                private getPokemonsDataServiceVar : GetPokemonsDataService) {
     this.localPokemonDataTs = localPokemonData.data;
 
   }
@@ -39,33 +42,37 @@ export class NameComponent implements OnInit {
   //This functions Suggests Pokemon to User based on value enetered in Input box
   autoCompletion(event: any) {
 
-
-    //console.log(event.target.value);
     this.textInput = event.target.value;
-    this.autoCompleteArray.splice(0, this.autoCompleteArray.length);
-
-    if (this.textInput != "") {
-      for (let i = 0; i < localPokemonData.data.length; i++) {
-
-        if ((this.textInput).toLowerCase() === (localPokemonData.data[i].name.substring(0,this.textInput.length)).toLowerCase()) {
-        //if (localPokemonData.data[i].name.toLowerCase().includes(this.textInput.toLowerCase(), 0)) {
-          //create local object and push object in autoComplete array
-          let obj = {
-            id: "",
-            name: ""
-          }
-
-          obj.id = String(localPokemonData.data[i].id);
-          obj.name = localPokemonData.data[i].name;
-
-
-          this.autoCompleteArray.push(obj);
-          //console.log(this.autoCompleteArray);
-          //console.log(typeof(this.autoCompleteArray));
-        }
-
-      }
+    if(this.textInput != "") {
+    this.autoCompleteArray = this.autoCompleteServiceVar.autoCompleteFunc(event.target.value , "name " , this.localPokemonDataTs);
     }
+
+    // //console.log(event.target.value);
+    // this.textInput = event.target.value;
+    // this.autoCompleteArray.splice(0, this.autoCompleteArray.length);
+
+    // if (this.textInput != "") {
+    //   for (let i = 0; i < localPokemonData.data.length; i++) {
+
+    //     if ((this.textInput).toLowerCase() === (localPokemonData.data[i].name.substring(0,this.textInput.length)).toLowerCase()) {
+    //     //if (localPokemonData.data[i].name.toLowerCase().includes(this.textInput.toLowerCase(), 0)) {
+    //       //create local object and push object in autoComplete array
+    //       let obj = {
+    //         id: "",
+    //         name: ""
+    //       }
+
+    //       obj.id = String(localPokemonData.data[i].id);
+    //       obj.name = localPokemonData.data[i].name;
+
+
+    //       this.autoCompleteArray.push(obj);
+    //       //console.log(this.autoCompleteArray);
+    //       //console.log(typeof(this.autoCompleteArray));
+    //     }
+
+    //   }
+    // }
   }
   //This functions displays data of Pokemon selected from Suggestions displayed under Input box
   displayClickedData(id: String) {
