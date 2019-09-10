@@ -16,7 +16,7 @@ export class NameComponent implements OnInit {
   selectedPokemon;
 
   /* why this does not work? Code Piece-2
-  constructor() { 
+  constructor() {
     this.localPokemonDataTs = localPokemonData;
   }
 
@@ -44,7 +44,7 @@ export class NameComponent implements OnInit {
 
     this.textInput = event.target.value;
     if(this.textInput != "") {
-    this.autoCompleteArray = this.autoCompleteServiceVar.autoCompleteFunc(event.target.value , "name " , this.localPokemonDataTs);
+    this.autoCompleteArray = this.autoCompleteServiceVar.autoCompleteFunc(event.target.value , "name" , this.localPokemonDataTs);
     }
 
     // //console.log(event.target.value);

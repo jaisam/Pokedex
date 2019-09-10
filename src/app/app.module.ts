@@ -11,7 +11,6 @@ import { WeaknessComponent } from './weakness/weakness.component';
 import { SpawnChancesComponent } from './spawn-chances/spawn-chances.component';
 import { AvgSpawnsComponent } from './avg-spawns/avg-spawns.component';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
-import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
