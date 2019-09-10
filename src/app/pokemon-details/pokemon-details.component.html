@@ -6,18 +6,32 @@
                 <h3 class="card-title">Name = {{ pokemonDataObject.name }}</h3>
                 <p class="card-text"> Height = {{ pokemonDataObject.height }} </p>
                 <p class="card-text"> Weight = {{ pokemonDataObject.weight }}</p>
-                <p class="card-text"> Weaknesses = </p>
+                <div class="card-text" *ngIf="pokemonDataObject.weaknesses"> 
+                <p>Weaknesses = </p> 
                 <ul>
-                    <li *ngFor="let loopVariable of pokemonDataObject.weaknesses,let i = index" >
-                         <span> {{ loopVariable }} </span>
+                    <li *ngFor="let loopVariable of pokemonDataObject.weaknesses,let i = index">
+                        <span> {{ loopVariable }} </span>
                     </li>
                 </ul>
-                <p class="card-text"> Next Evolutions = </p>
-                <ul>
-                    <li *ngFor="let loopVariable of pokemonDataObject.next_evolution,let i = index" >
-                         <span> {{ loopVariable.name }} </span>
-                    </li>
-                </ul>
+                </div>
+                <p class="card-text" *ngIf="pokemonDataObject.prev_evolution || pokemonDataObject.next_evolution ">
+                    Evolutions = </p>
+                <div *ngIf="pokemonDataObject.prev_evolution">
+                    <p>Previous Evolution : </p>
+                    <ul>
+                        <li *ngFor="let loopVariable of pokemonDataObject.prev_evolution,let i = index">
+                            <span> {{ loopVariable.name }} </span>
+                        </li>
+                    </ul>
+                </div>
+                <div *ngIf="pokemonDataObject.next_evolution">
+                    <p>Next Evolution : </p>
+                    <ul>
+                        <li *ngFor="let loopVariable of pokemonDataObject.next_evolution,let i = index">
+                            <span> {{ loopVariable.name }} </span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="col-md-4">

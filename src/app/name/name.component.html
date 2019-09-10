@@ -1,35 +1,32 @@
-<form #nameForm="ngForm" (ngSubmit)="searchByName()">
-  <div class="form-inline row">
-    <div class="col-sm-11">
-      <input id="nameInput" class="form-control mr-sm-2" style='width : 100%;' type="text" placeholder="Search"
-             aria-label="Search" (input)="autoCompletion($event)" name="nameInput" [(ngModel)]="nameModel.nameInput">
+<form #nameForm="ngForm">
+    <div class="form-inline row">
+        <div class="col-sm-11">
+            <input id="inputText" class="form-control mr-sm-2" style='width : 100%' type="search" placeholder="Search"
+                aria-label="Search" (input)="autoCompletion($event)" name="inputText" [(ngModel)]="inputText">
+        </div>
+        <div class="col-sm-1">
+            <button class="btn btn-outline-success my-2 mr-sm-0" type="submit" (input)="searchByName($event)">Name
+                Search</button>
+        </div>
     </div>
-    <div class="col-sm-1">
-      <button class="btn btn-outline-success my-2 mr-sm-0" type="submit">Name Search
-      </button>
-    </div>
-  </div>
 </form>
-
 <ul>
-  <li class="col-sm-11"
-      *ngFor="let loopVariable of autoCompleteArray">
-    {{ loopVariable }}
-  </li>
+    <li class="col-sm-11" *ngFor="let loopVariable of autoCompleteArray" (click)="displayClickedData(loopVariable.id)">
+        {{ loopVariable.name }}
+    </li>
 </ul>
-<!--
-<p *ngFor="let loopVariable of autoCompleteArray">
-       {{ loopVariable }}
-</p>
--->
+
 <!-- why this does not work? Code Piece-2
-<app-pokemon-details *ngFor="let loopVariable of localPokemonDataTs; let i = index"
-    [pokemonDataObject] = "loopVariable.data">
-</app-pokemon-details>
--->
+    <app-pokemon-details *ngFor="let loopVariable of localPokemonDataTs; let i = index"
+        [pokemonDataObject] = "loopVariable.data">
+    </app-pokemon-details>
+    -->
 
 <!-- correct code
-<app-pokemon-details *ngFor="let loopVariable of localPokemonDataTs; let i = index"
-    [pokemonDataObject] = "loopVariable">
+    <app-pokemon-details *ngFor="let loopVariable of localPokemonDataTs; let i = index"
+        [pokemonDataObject] = "loopVariable">
+    </app-pokemon-details>
+    -->
+
+<app-pokemon-details *ngIf="selectedPokemon" [pokemonDataObject]="selectedPokemon">
 </app-pokemon-details>
--->
