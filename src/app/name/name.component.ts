@@ -12,11 +12,11 @@ export class NameComponent implements OnInit {
 
   localPokemonDataTs ;
   textInput: string;
-  autoCompleteArray = [];
+  autoCompleteArrayTS =  [];
   selectedPokemon;
 
   /* why this does not work? Code Piece-2
-  constructor() { 
+  constructor() {
     this.localPokemonDataTs = localPokemonData;
   }
 
@@ -39,12 +39,24 @@ export class NameComponent implements OnInit {
     //console.log(event);
   }
 
-  //This functions Suggests Pokemon to User based on value enetered in Input box
+  //This functions Suggests Pokemon to User based on value entered in Input box
   autoCompletion(event: any) {
 
     this.textInput = event.target.value;
+    this.autoCompleteArrayTS = [];
+
     if(this.textInput != "") {
-    this.autoCompleteArray = this.autoCompleteServiceVar.autoCompleteFunc(event.target.value , "name " , this.localPokemonDataTs);
+      for (let i = 0; i < this.localPokemonDataTs.length; i++)
+      {
+        let found = false ;
+        found = this.autoCompleteServiceVar.autoCompleteFunc(this.textInput  , [this.localPokemonDataTs[i].name]);
+        if (found){
+          console.log(this.localPokemonDataTs[i].name);
+          this.autoCompleteArrayTS.push(this.localPokemonDataTs[i]);
+
+        }
+      }
+
     }
 
     // //console.log(event.target.value);
@@ -78,7 +90,7 @@ export class NameComponent implements OnInit {
   displayClickedData(id: String) {
 
     //console.log(id);
-    this.autoCompleteArray.splice(0, this.autoCompleteArray.length);
+    this.autoCompleteArrayTS.splice(0, this.autoCompleteArrayTS.length);
 
     for (let i = 0; i < localPokemonData.data.length; i++) {
 

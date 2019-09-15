@@ -4,40 +4,39 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AutoCompleteService {
-  autoCompleteArray ;
-  compareWith : String;
-  constructor() { }
+  matchFound=false;
+
+  constructor() {
+  }
 
   // click () {
   //   return console.log("Hello");
   // }
 
-  autoCompleteFunc (inputText : String , searchParam : String , localPokemonData) {
+  autoCompleteFunc(inputText: String, localPokemonData) {
 
-    console.log(inputText);
-    console.log(searchParam);
-    for (let i=0; i< localPokemonData.length ; i++ ){
-      console.log(localPokemonData[i].id);
+    // console.log(inputText);
+    // console.log(searchParam);
+    // for (let i=0; i< localPokemonData.length ; i++ ){
+    //   console.log(localPokemonData[i]);
+    // }
+    this.matchFound=false;
+    for (let i = 0; i < localPokemonData.length; i++) {
+
+      //Replacing this with dynamic value
+      // if (searchParam === "name") {
+      //   this.compareWith = localPokemonData[i].name;
+      // }
+      //this.compareWith = localPokemonData[i][searchParam];
+
+
+      if (inputText.toLowerCase() === (localPokemonData[i].substring(0, inputText.length)).toLowerCase()) {
+       // console.log(localPokemonData[i]);
+        this.matchFound = true;
+      }
     }
 
-    this.autoCompleteArray.splice(0, this.autoCompleteArray.length);
 
-
-      for (let i = 0; i < localPokemonData.length; i++) {
-
-        if (searchParam === "name") {
-          this.compareWith == localPokemonData[i].name;
-        }
-
-        if (inputText.toLowerCase() === (this.compareWith.substring(0,inputText.length)).toLowerCase()) {
-          console.log(localPokemonData[i].name);
-          this.autoCompleteArray.push(localPokemonData[i]);
-
-        }
-
-      }
-    
-
-    return this.autoCompleteArray ;
+    return this.matchFound;
   }
 }

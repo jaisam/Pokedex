@@ -11,7 +11,7 @@
     </div>
 </form>
 <ul>
-    <li class="col-sm-11" *ngFor="let loopVariable of autoCompleteArray" (click)="displayClickedData(loopVariable.id)">
+    <li class="col-sm-11" *ngFor="let loopVariable of autoCompleteArrayTS" (click)="displayClickedData(loopVariable.id)">
         {{ loopVariable.name }}
     </li>
 </ul>
@@ -28,5 +28,5 @@
     </app-pokemon-details>
     -->
 
-<app-pokemon-details *ngIf="selectedPokemon" [pokemonDataObject]="selectedPokemon">
-</app-pokemon-details>
+<!--<app-pokemon-details *ngIf="selectedPokemon" [pokemonDataObject]="selectedPokemon">-->
+<!--</app-pokemon-details>-->
