@@ -10,11 +10,7 @@
         </div>
     </div>
 </form>
-<ul>
-    <li class="col-sm-11" *ngFor="let loopVariable of autoCompleteArrayTS" (click)="displayClickedData(loopVariable.id)">
-        {{ loopVariable.name }}
-    </li>
-</ul>
+
 
 <!-- why this does not work? Code Piece-2
     <app-pokemon-details *ngFor="let loopVariable of localPokemonDataTs; let i = index"
@@ -28,5 +24,7 @@
     </app-pokemon-details>
     -->
 
-<!--<app-pokemon-details *ngIf="selectedPokemon" [pokemonDataObject]="selectedPokemon">-->
-<!--</app-pokemon-details>-->
+<div id="poke_container" class="poke-container" >
+    <app-pokemon-details *ngFor="let loopVariable of autoCompleteArrayTS"  [pokemonDataObject]="loopVariable">
+    </app-pokemon-details>
+</div>
