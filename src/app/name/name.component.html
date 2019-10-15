@@ -11,20 +11,7 @@
     </div>
 </form>
 
-
-<!-- why this does not work? Code Piece-2
-    <app-pokemon-details *ngFor="let loopVariable of localPokemonDataTs; let i = index"
-        [pokemonDataObject] = "loopVariable.data">
-    </app-pokemon-details>
-    -->
-
-<!-- correct code
-    <app-pokemon-details *ngFor="let loopVariable of localPokemonDataTs; let i = index"
-        [pokemonDataObject] = "loopVariable">
-    </app-pokemon-details>
-    -->
-
 <div id="poke_container" class="poke-container" >
-    <app-pokemon-details *ngFor="let loopVariable of autoCompleteArrayTS"  [pokemonDataObject]="loopVariable">
+    <app-pokemon-details *ngFor="let loopVariable of autoCompleteArray"  [pokemonDataObject]="loopVariable">
     </app-pokemon-details>
 </div>

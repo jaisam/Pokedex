@@ -1,7 +1,8 @@
-<div class="form-inline row">
+<form #nameForm="ngForm">
+    <div class="form-inline row">
         <div class="col-sm-11">
             <input class="form-control mr-sm-2" style = 'width : 100%' type="search" placeholder="Search" aria-label="Search"
-            (input) = "autoComplete($event)"
+            (input) = "autoCompletion($event)"
             id = "inputText"
             name = "inputText" 
             [(ngModel)] = "inputText"
@@ -10,15 +11,10 @@
         <div class="col-sm-1">
             <button class="btn btn-outline-secondary my-2 mr-sm-0" type="submit">Search</button>
         </div>
+    </div>
+</form>
 
-    <ul>
-        <li class="col-sm-11" *ngFor="let loopVariable of autoCompleteWeakness " (click) ="getPokemons(loopVariable)">
-            {{ loopVariable }}
-        </li>
-    </ul>
-</div>
-
-    <app-pokemon-details *ngFor = "let loopVariable of pokemonDataArray"
-    [pokemonDataObject] = "loopVariable"
-    >
+<div id="poke_container" class="poke-container" >
+    <app-pokemon-details *ngFor="let loopVariable of autoCompleteArray"  [pokemonDataObject]="loopVariable">
     </app-pokemon-details>
+</div>

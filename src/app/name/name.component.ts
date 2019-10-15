@@ -28,12 +28,14 @@ export class NameComponent implements OnInit {
 
 constructor( private autoCompleteServiceVar : AutoCompleteService ,
               private getPokemonsDataServiceVar : GetPokemonsDataService,
-                private httop : HttpClient) 
+                private http : HttpClient) 
 {
     this.localPokemonDataTs = localPokemonData.data;
 }
 
-ngOnInit() {}
+ngOnInit() {
+
+}
 
 searchByName(event: Event) 
 {
@@ -89,13 +91,15 @@ autoCompletion(event: any)
 
     if(this.textInput != "") 
     {
-      this.autoCompleteServiceVar.autoCompleteUsingAPI( 'name'  , this.textInput )
-            .subscribe( data => this.autoCompleteArray = data );
-
-      this.autoCompleteArray.forEach(data => {
-        console.log(data);
-      });
+       this.autoCompleteServiceVar.autoCompleteUsingAPI( 'name'  , this.textInput )
+            .subscribe(  data => {
+              console.log('before');
+              this.autoCompleteArray = data;
+              console.log('after');
+              console.log('Inside if', this.autoCompleteArray);
+            });
     }
+    console.log('outside if', this.autoCompleteArray);
 }
 //[end] This functions Suggests Pokemon to User based on value entered in Input box Using API
 
