@@ -8,12 +8,12 @@ import { AvgSpawnsComponent } from './avg-spawns/avg-spawns.component';
 
 
 const routes: Routes = [
-  {path : 'byname', component : NameComponent},
-  {path : 'bytype', component : TypeComponent},
-  {path : 'byweakness', component : WeaknessComponent },
-  {path : 'byspawnChances', component : SpawnChancesComponent},
-  {path : 'byavgSpawns', component : AvgSpawnsComponent},
-  {path : '', redirectTo : 'byname' , pathMatch : 'full'}
+  {path : 'name', component : NameComponent},
+  {path : 'type', component : TypeComponent},
+  {path : 'weakness', component : WeaknessComponent },
+  {path : 'spawnChances', component : SpawnChancesComponent},
+  {path : 'avgSpawns', component : AvgSpawnsComponent},
+  {path : '', redirectTo : 'name' , pathMatch : 'full'}
 ];
 
 @NgModule({

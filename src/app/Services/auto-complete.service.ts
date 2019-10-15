@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Pokemon } from '../../Model/Pokemon';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -6,12 +10,10 @@ import { Injectable } from '@angular/core';
 export class AutoCompleteService {
   matchFound=false;
 
-  constructor() {
+  constructor( private http : HttpClient ) {
   }
 
-  // click () {
-  //   return console.log("Hello");
-  // }
+ 
 
   autoCompleteFunc(inputText: String, localPokemonData) {
 
@@ -39,4 +41,15 @@ export class AutoCompleteService {
 
     return this.matchFound;
   }
+
+// [start] function to retrive data from API
+  autoCompleteUsingAPI( route : String, searchParam : String) : Observable<Pokemon[]>{
+
+    let _url  = `http://localhost:3000/${route}/${searchParam}` ; 
+    console.log(_url);
+    return this.http.get<Pokemon[]>(_url);
+  }
 }
+// [end] function to retrive data from API
+
+
