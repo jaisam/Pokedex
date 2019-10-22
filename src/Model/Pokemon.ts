@@ -1,4 +1,6 @@
-export interface Pokemon {
+export interface Response {
+    msg : String,
+    pokemon : [{
     id :  Number,
     num: String,
     name:  String,
@@ -20,4 +22,5 @@ export interface Pokemon {
     }]
     status : String,
     lastUpdated : Date,
+}]
 }

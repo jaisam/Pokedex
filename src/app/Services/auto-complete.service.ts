@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Pokemon } from '../../Model/Pokemon';
+import { Response } from '../../Model/Pokemon';
 import { Observable } from 'rxjs';
 
 
@@ -38,11 +38,11 @@ autoCompleteFunc(inputText: String, localPokemonData)
 
 
 // [start] function to retrive data from API
-autoCompleteUsingAPI( route : String, searchParam : String) : Observable<Pokemon[]>
+autoCompleteUsingAPI( route : String, searchParam : String) : Observable<any>
   {
     let _url  = `http://localhost:3000/${route}/${searchParam}` ; 
-    // console.log(_url);
-    return this.http.get<Pokemon[]>(_url);
+    console.log(_url, searchParam) ;
+    return this.http.get<any>(_url);
   }
 // [end] function to retrive data from API
 

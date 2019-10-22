@@ -89,7 +89,7 @@ autoCompletion(input : string)
 {
 
     this.textInput = input;
-    // console.log(this.textInput);
+     console.log(this.textInput);
     this.autoCompleteArray = [];
 
     if(this.textInput != "") 
@@ -97,9 +97,14 @@ autoCompletion(input : string)
        this.autoCompleteServiceVar.autoCompleteUsingAPI( 'name'  , this.textInput )
             .subscribe(  data => {
               // console.log('before');
-              this.autoCompleteArray = data;
+               if (data.msg == 'Pokemon does not exist with such name'){
+                this.autoCompleteArray = [];
+               }
+               else {
+              this.autoCompleteArray = data.pokemon;
+               }
               // console.log('after');
-              // console.log('Inside if', this.autoCompleteArray);
+               console.log('Inside if', this.autoCompleteArray);
             });
     }
     // console.log('outside if', this.autoCompleteArray);

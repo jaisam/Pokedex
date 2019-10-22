@@ -96,7 +96,13 @@ export class WeaknessComponent implements OnInit {
     if (this.inputValue != "") {
       this.autoCompleteServiceVar.autoCompleteUsingAPI('weakness', this.inputValue)
         .subscribe(data => {
-          this.autoCompleteArray = data;
+          if (data.msg == 'No such weaknes exist' ){
+            this.autoCompleteArray = [];
+           }
+           else {
+          this.autoCompleteArray = data.pokemon;
+           };
+          console.log(data);
         });
     }
   }
