@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class NameComponent implements OnInit {
 
   localPokemonDataTs ;
+  inputText : string;
   textInput: string;
   autoCompleteArray =  [];
   selectedPokemon;
@@ -37,9 +38,10 @@ ngOnInit() {
 
 }
 
-searchByName(event: Event) 
+onFormSubmit() 
 {
-    //console.log(event);
+  console.log('Inside form submit');
+  this.autoCompletion(this.inputText);
 }
 
 //   //[start] This functions Suggests Pokemon to User based on value entered in Input box without API
@@ -83,10 +85,11 @@ searchByName(event: Event)
 
 
 //[start] This functions Suggests Pokemon to User based on value entered in Input box Using API
-autoCompletion(event: any) 
+autoCompletion(input : string) 
 {
 
-    this.textInput = event.target.value;
+    this.textInput = input;
+    console.log(this.textInput);
     this.autoCompleteArray = [];
 
     if(this.textInput != "") 
