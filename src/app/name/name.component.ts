@@ -40,7 +40,7 @@ ngOnInit() {
 
 onFormSubmit() 
 {
-  console.log('Inside form submit');
+  // console.log('Inside form submit');
   this.autoCompletion(this.inputText);
 }
 
