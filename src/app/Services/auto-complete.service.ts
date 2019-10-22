@@ -41,7 +41,7 @@ autoCompleteFunc(inputText: String, localPokemonData)
 autoCompleteUsingAPI( route : String, searchParam : String) : Observable<Pokemon[]>
   {
     let _url  = `http://localhost:3000/${route}/${searchParam}` ; 
-    console.log(_url);
+    // console.log(_url);
     return this.http.get<Pokemon[]>(_url);
   }
 // [end] function to retrive data from API

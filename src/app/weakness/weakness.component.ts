@@ -83,23 +83,19 @@ ngOnInit() {}
 
 
 //[start] This functions Suggests Pokemon to User based on value entered in Input box Using API
-autoCompletion(event: any) 
+autoCompletion(input : string) 
 {
 
-    this.inputValue = event.target.value;
+    this.inputValue = input ;
     this.autoCompleteArray = [];
 
     if(this.inputValue != "") 
     {
        this.autoCompleteServiceVar.autoCompleteUsingAPI( 'weakness'  , this.inputValue )
             .subscribe(  data => {
-              console.log('before');
               this.autoCompleteArray = data;
-              console.log('after');
-              console.log('Inside if', this.autoCompleteArray);
             });
     }
-    console.log('outside if', this.autoCompleteArray);
 }
 //[end] This functions Suggests Pokemon to User based on value entered in Input box Using API
 

@@ -89,20 +89,20 @@ autoCompletion(input : string)
 {
 
     this.textInput = input;
-    console.log(this.textInput);
+    // console.log(this.textInput);
     this.autoCompleteArray = [];
 
     if(this.textInput != "") 
     {
        this.autoCompleteServiceVar.autoCompleteUsingAPI( 'name'  , this.textInput )
             .subscribe(  data => {
-              console.log('before');
+              // console.log('before');
               this.autoCompleteArray = data;
-              console.log('after');
-              console.log('Inside if', this.autoCompleteArray);
+              // console.log('after');
+              // console.log('Inside if', this.autoCompleteArray);
             });
     }
-    console.log('outside if', this.autoCompleteArray);
+    // console.log('outside if', this.autoCompleteArray);
 }
 //[end] This functions Suggests Pokemon to User based on value entered in Input box Using API
 
