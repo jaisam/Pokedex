@@ -1,47 +1,52 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Response } from '../../Model/Pokemon';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutoCompleteService {
-  // autoCompleteArray = [];//not needed to be an class variable.
-  compareWith: String;
+  matchFound=false;
 
-  constructor() {
+  constructor( private http : HttpClient ) {
   }
 
-  // click () {
-  //   return console.log("Hello");
-  // }
+ 
+// [start] function to retrive data from pokemonData.json
+autoCompleteFunc(inputText: String, localPokemonData) 
+  {
+    this.matchFound=false;
+    for (let i = 0; i < localPokemonData.length; i++) 
+    {
+      //Replacing this with dynamic value
+      // if (searchParam === "name") {
+      //   this.compareWith = localPokemonData[i].name;
+      // }
+      //this.compareWith = localPokemonData[i][searchParam];
 
-  autoCompleteFunc(inputText: String, searchParam: String, localPokemonData) {
-    let autoCompleteArray=[];//define autoCompleteArray local variable.
-    console.log(inputText);
-    console.log(searchParam);
-    // for (let i = 0; i < localPokemonData.length; i++) {
-    //   console.log(localPokemonData[i].id);
-    // }
-    // why splicing an empty array?
-    // this.autoCompleteArray.splice(0, this.autoCompleteArray.length);
-
-
-    for (let i = 0; i < localPokemonData.length; i++) {
-
-      if (searchParam === "name") {
-        this.compareWith = localPokemonData[i].name;
+      if (inputText.toLowerCase() === (localPokemonData[i].substring(0, inputText.length)).toLowerCase()) 
+      {
+       // console.log(localPokemonData[i]);
+        this.matchFound = true;
       }
-      // Instead of above you can do the following,
-      // then you wont need to write if else condition for every property to be matched.
-      // this.compareWith=localPokemonData[i][searchParam];
-
-      if (inputText.toLowerCase() === (this.compareWith.substring(0, inputText.length)).toLowerCase()) {
-        // console.log(localPokemonData[i].name);
-        autoCompleteArray.push(localPokemonData[i]);
-      }
-
     }
-
-
-    return autoCompleteArray;
+    return this.matchFound;
   }
+// [end] function to retrive data from pokemonData.json
+
+
+// [start] function to retrive data from API
+autoCompleteUsingAPI( route : String, searchParam : String) : Observable<any>
+  {
+    let _url  = `http://localhost:3000/${route}/${searchParam}` ; 
+    console.log(_url, searchParam) ;
+    return this.http.get<any>(_url);
+  }
+// [end] function to retrive data from API
+
+
 }
+
+

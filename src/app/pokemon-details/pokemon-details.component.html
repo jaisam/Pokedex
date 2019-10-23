@@ -1,4 +1,14 @@
-<div class="card mb-3">
+<div class="pokemon">
+    <div class="img-container">
+        <img [src]="pokemonDataObject.img" [alt]="pokemonDataObject.name" />
+    </div>
+    <div class="info">
+        <span class="number">{{ pokemonDataObject.id.toString().padStart(3, '0') }} </span>
+        <h3 class="name">{{ pokemonDataObject.name }}</h3>
+        <!-- <small class="type">Type: <span>${type}</span></small> -->
+    </div>
+</div>
+<!-- <div class="card mb-3">
     <div class="row no-gutters">
 
         <div class="col-md-8">
@@ -38,4 +48,4 @@
             <img [src]="pokemonDataObject.img" class="card-img" [alt]="pokemonDataObject.name">
         </div>
     </div>
-</div>
+</div> -->

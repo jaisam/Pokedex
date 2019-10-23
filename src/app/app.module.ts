@@ -11,6 +11,7 @@ import { WeaknessComponent } from './weakness/weakness.component';
 import { SpawnChancesComponent } from './spawn-chances/spawn-chances.component';
 import { AvgSpawnsComponent } from './avg-spawns/avg-spawns.component';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.compo
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
