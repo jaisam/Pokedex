@@ -11,9 +11,12 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + '/dist'));
 
 app.get('/*', function(req,res) {
-    
+
 res.sendFile(path.join(__dirname+'/dist/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+let port=process.env.PORT || 8080;
+app.listen(port, function () {
+  console.log(`Server listening on ${port}`);
+});
