@@ -8,10 +8,10 @@ const app = express();
 app.use(morgan('dev'));
 
 // Serve only the static files form the dist directory
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist/pokedex')));
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/pokedex/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
