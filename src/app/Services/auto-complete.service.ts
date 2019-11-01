@@ -40,8 +40,10 @@ autoCompleteFunc(inputText: String, localPokemonData)
 // [start] function to retrive data from API
 autoCompleteUsingAPI( route : String, searchParam : String) : Observable<any>
   {
-    let _url  = `http://localhost:3000/${route}/${searchParam}` ; 
-    console.log(_url, searchParam) ;
+    // let base_url = 'http://localhost:3000/';
+    let base_url = 'https://js-pokedex-backend.herokuapp.com/'
+    let _url  = `${base_url}${route}/${searchParam}` ; 
+    // console.log(_url, searchParam) ;
     return this.http.get<any>(_url);
   }
 // [end] function to retrive data from API
